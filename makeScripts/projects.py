@@ -39,7 +39,6 @@ main_element = soup.select_one('main')
 main_element.clear()
 
 for project in projects:
-    print(project['link'])
     project_div = soup.new_tag('div')
     project_div['class'] = 'project'
     project_header = soup.new_tag('h2')
