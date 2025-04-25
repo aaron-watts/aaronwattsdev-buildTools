@@ -1,7 +1,11 @@
 import os
 import xml.etree.ElementTree as ET
 
-root_url = 'https://aaronwattsdev.com/'
+root_url = 'https://aaronwatts.dev/'
+sub_directories = [
+    'guides/',
+    'tech/'
+]
 
 def build_url(path=''):
     url = ET.SubElement(urlset, 'url')
@@ -15,8 +19,12 @@ urlset.set('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9')
 build_url()
 build_url('home/')
 
-for filename in os.listdir('projects/'):
-    build_url(f'{filename[:-5]}/')
+for directory in sub_directories:
+    build_url(directory)
+    for filename in os.listdir(directory):
+        url = filename[:-5]
+        if (url != "index" and not filename.endswith('.xml')):
+            build_url(f'{directory}{url}/')
 
 tree = ET.ElementTree(urlset)
 ET.indent(tree)
