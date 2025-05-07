@@ -17,17 +17,17 @@ def main():
         link_text = f'{root_url}{article["link"]}'
         rss_item = build_element(rss_channel, 'item')
         build_element(rss_item, 'title', article['title'])
-        build_element(rss_item, 'link', article['link'])
+        build_element(rss_item, 'link', link_text)
         build_element(rss_item, 'pubDate', article['formatted_date'])
         build_element(rss_item, 'description', ' '.join(article['description'].split()))
         build_element(rss_item, 'guid', link_text)
         build_element(
             rss_item,
             'content:encoded',
-            str(content)
+            str(article['content'])
             .strip()
             .replace('\\n', '')
-            .replace('="/', '="https://aaronwattsdev.com/')
+            .replace('="/', '="https://aaronwatts.dev/')
         )
         build_media(rss_item, article['link'])
 
