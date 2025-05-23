@@ -13,14 +13,14 @@ def main():
     urlset.set('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9')
 
     build_sitemap_url()
-    build_sitemap_url('home/')
+    build_sitemap_url('home')
 
     for directory in sub_directories:
         build_sitemap_url(f'{directory}/')
         for filename in os.listdir(directory):
             url = filename[:-5]
             if (url != "index" and not filename.endswith('.xml')):
-                build_sitemap_url(f'{directory}/{url}/')
+                build_sitemap_url(f'{directory}/{url}')
 
     tree = ET.ElementTree(urlset)
     ET.indent(tree)

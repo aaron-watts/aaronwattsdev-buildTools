@@ -73,7 +73,7 @@ def main():
             main_element.append(article_div)
 
         with open (f'{directory}/index.html', 'w') as outf:
-            outf.write(BeautifulSoup.prettify(soup))
+            outf.write(str(soup))
 
     articles['all'].sort(reverse=True, key=date_sort)
     latest_article = articles['all'][0]
@@ -108,7 +108,7 @@ def main():
     latest.append(latest_description)
 
     with open('home.html', 'w') as outf:
-        outf.write(BeautifulSoup.prettify(soup))
+        outf.write(str(soup))
 
 if __name__ == "__main__":
     main()
