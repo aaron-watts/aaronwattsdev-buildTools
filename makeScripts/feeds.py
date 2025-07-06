@@ -72,9 +72,9 @@ def main():
         atom_link.set('href', f'{feed_url}/feed.xml')
         atom_link.set('rel', 'self')
         atom_link.set('type', 'applications/rss+xml')
-        build_element(rss_channel, 'title', feed_data['all']['title'])
+        build_element(rss_channel, 'title', title)
         build_element(rss_channel, 'link', f'{page_url}')
-        build_element(rss_channel, 'description', feed_data['all']['description'])
+        build_element(rss_channel, 'description', description)
         build_element(rss_channel, 'category', 'Technology')
 
         # create and populate an item element for each project
