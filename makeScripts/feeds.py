@@ -51,6 +51,8 @@ def main():
         page_url = f'{root_url}/home' if not sub_dir else f'{root_url}/{sub_dir}'
         feed_path = 'feed.xml' if not sub_dir else f'{sub_dir}/feed.xml'
         directory = 'all' if not sub_dir else sub_dir
+        title = feed_data['all']['title'] if not sub_dir else feed[sub_dir]['title']
+        description = feed_data['all'] if not sub_dir else feed[sub_dir]['description']
 
         # Declare XML namespaces to be used
         ET.register_namespace('', 'http://www.w3.org/2005/Atom')
