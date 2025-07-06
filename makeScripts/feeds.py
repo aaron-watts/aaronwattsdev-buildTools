@@ -52,7 +52,7 @@ def main():
         feed_path = 'feed.xml' if not sub_dir else f'{sub_dir}/feed.xml'
         directory = 'all' if not sub_dir else sub_dir
         title = feed_data['all']['title'] if not sub_dir else feed_data[sub_dir]['title']
-        description = feed_data['all'] if not sub_dir else feed_data[sub_dir]['description']
+        description = feed_data['all']['description'] if not sub_dir else feed_data[sub_dir]['description']
 
         # Declare XML namespaces to be used
         ET.register_namespace('', 'http://www.w3.org/2005/Atom')
